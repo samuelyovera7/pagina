@@ -1,0 +1,3393 @@
+/* ==================================== */
+/* 1. VARIABLES Y RESET GENERAL         */
+/* ==================================== */
+:root {
+    /* Colores Basicos */
+    --color-primary: #002D62; /* Azul Marino Profundo (Base Premium) */
+    --color-secondary: #ffd700; /* Dorado/Amarillo (Acento Premium) */
+    --color-accent: #ffeb3b; /* Amarillo para botones */
+    --color-text: #333;
+    --color-text-light: #f4f4f4;
+    --color-background-light: #f7f9fc; /* Fondo claro para contraste */
+
+    /* Tipografía */
+    --font-heading: 'Playfair Display', serif; /* Fuente serif para títulos premium */
+    --font-body: 'Montserrat', sans-serif; /* Fuente sans-serif moderna para cuerpo */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+/* Contenedor central (para centrar el contenido) */
+.container {
+    max-width: 1200px; /* O el ancho máximo que desees */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Para que no se pegue a los bordes en móviles */
+    padding-right: 15px;
+}
+
+/* ==================================== */
+/* 2. TIPOGRAFÍA Y SECCIONES            */
+/* ==================================== */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-secondary); /* Línea dorada bajo el título */
+    margin: 10px auto 0;
+}
+
+/* ==================================== */
+/* 3. BOTONES (CTA)                     */
+/* ==================================== */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: var(--color-accent); /* Fondo amarillo/dorado */
+    color: var(--color-primary); /* Texto azul marino */
+    border: 2px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    border-color: var(--color-primary);
+    transform: translateY(-2px); /* Efecto 3D sutil */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.cta-outline {
+    border: 2px solid var(--color-secondary); /* Amarillo */
+    color: var(--color-secondary) !important; /* Texto amarillo */
+    padding: 8px 15px;
+    margin-left: 15px;
+    background: transparent;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+.cta-outline:hover {
+    background: var(--color-secondary); 
+    color: var(--color-primary) !important; 
+}
+
+/* ------------------------------------ */
+/* 4. NUEVA SECCIÓN: ENCABEZADO Y LOGO  */
+/* ------------------------------------ */
+
+.main-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Reducimos el relleno para compactar */
+    padding: 12px 15px; 
+}
+
+/* Estilos para el contenedor del Logo (para la imagen) */
+.main-header .logo {
+    text-decoration: none;
+    color: transparent; 
+    display: flex; 
+    align-items: center;
+    /* Altura compacta para el logo */
+    height: 70px; 
+    width: auto;
+    /* 🚨 AÑADIR: Margen Negativo para que el logo "sobresalga" */
+    margin-top: -28px; /* Ejemplo: (-50px Altura Logo + 16px Padding * 2 = 18px) -> -8px. */
+    margin-bottom: -28px; /* Ajusta según el tamaño exacto del logo que quieres */
+}
+
+/* Estilo para la imagen del logo (tu PNG) */
+.main-header .logo-img {
+    height: 100%; 
+    width: auto;
+    display: block;
+}
+
+/* Estilos para los enlaces de navegación */
+.main-nav .nav-link {
+    color: var(--color-text); 
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.5rem; 
+    /* Ajuste de padding, ya que el .cta-outline tiene su propio padding */
+    padding: 8px 15px; 
+    transition: color 0.3s;
+}
+
+/* === CORRECCIÓN: BOTÓN CONTÁCTANOS === */
+.main-nav .cta-outline {
+    border: 2px solid var(--color-secondary) !important;
+    color: var(--color-secondary) !important;
+    padding: 8px 15px !important;
+    background: transparent !important;
+    border-radius: 5px;
+    font-weight: 700;
+    margin-left: 15px;
+}
+
+.main-nav .cta-outline:hover {
+    background: var(--color-secondary) !important;
+    color: var(--color-primary) !important;
+}
+
+/* ====== MENÚ ESCRITORIO (CORRECTO) ====== */
+.main-header {
+    background-color: var(--color-primary);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-nav .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--color-secondary);
+}
+
+/* ==================================== */
+/* 5. HEADER Y HERO (Sección Principal) */
+/* ==================================== */
+
+/* --- HEADER --- */
+.main-header {
+    background-color: var(--color-primary);
+    padding: 15px 0;
+    position: sticky; /* Sticky para efecto profesional */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--color-secondary); /* Acento dorado al pasar el mouse */
+}
+
+.menu-toggle { display: none; /* Oculto en escritorio */ }
+
+/* --- HERO --- */
+.hero-section {
+    /* 1. RUTA DE TU IMAGEN JPG (ej. si está en la misma carpeta) */
+    background-image: url('img/fondo principal.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 80vh; 
+    display: flex; 
+    align-items: center; 
+    position: relative;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 2. APLICAR MENOR OPACIDAD (0.5 es un buen punto de partida) */
+    background: rgba(0, 45, 98, 0.5);
+}
+
+.hero-content {
+/* ... (el centrado ya está aquí) ... */
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    max-width: 700px;
+    text-align: center; 
+}
+
+.hero-content h1 {
+    color: #fff;
+    font-size: 4.5rem;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin: 20px 0 30px;
+}
+
+.hero-cta-group a:first-child {
+    /* Esta regla ya no es necesaria si todo está centrado */
+    /* margin-right: 15px; */ 
+    margin: 0 7.5px; /* Un margen a cada lado para que no estén pegados */
+}
+
+/* Y quizás un pequeño ajuste a su contenedor para centrar los CTA */
+.hero-cta-group {
+    display: inline-block; /* Permite que el margen 'auto' del .hero-content los centre */
+}
+
+/* ==================================== */
+/* 6. MISIÓN Y VISIÓN                   */
+/* ==================================== */
+
+.mission-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.mission-image-wrapper {
+    flex: 1;
+    min-height: 350px;
+    background: url('images/church-small-group.jpg') center / cover; /* Reemplazar */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mission-text {
+    flex: 1;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.value-card {
+    background-color: var(--color-background-light);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px); /* Efecto hover sutil */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+    font-size: 3rem;
+    color: var(--color-primary); /* Iconos dorados */
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* Animación flotante para Misión y Visión */
+#mision-vision .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#mision-vision .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.22);
+}
+
+/* Ajuste especial para que Nuestra Historia sobresalga suave */
+.historia-card {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.10); /* sombra suave como misión/visión */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Al pasar el mouse, sube un poquito igual que las otras tarjetas */
+/* Hacer que el cuadro de Nuestra Historia resalte más */
+.historia-card {
+    /* Forma y tamaño */
+    max-width: 850px;
+    margin: 0 auto 40px auto;
+    padding: 40px 35px;
+    /* Estética general */
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    /* Sombra y elevación */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+    /* Animación suave */
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.15rem; /* ⭐ Nuevo tamaño para que resalte más ⭐ */
+    line-height: 1.7; 
+    text-align: center;
+}
+
+/* Hover — igual que Misión y Visión pero más elegante */
+.historia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+}
+
+/* Justificar y centrar visualmente el texto de Misión y Visión */
+#mision-vision .card-text {
+    text-align: justify;
+    padding: 0 25px; /* más centrado horizontalmente */
+    font-size: 1.2rem; /* Aumenta el tamaño un poco */
+    line-height: 1.7; /* Mejora la separación de líneas */
+}
+
+/* ==================================== */
+/* 7. ANIMACIONES DIAGONALES ESPECIALES   */
+/* ==================================== */
+
+/* Misión: desde la esquina inferior izquierda hacia su posición */
+.fade-in-left {
+    opacity: 0;
+    transform: translate(-60px, 60px); /* DIAGONAL IZQUIERDA-ABAJO */
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in-left.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Visión: desde la esquina inferior derecha hacia su posición */
+.fade-in-right {
+    opacity: 0;
+    transform: translate(60px, 60px); /* DIAGONAL DERECHA-ABAJO */
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in-right.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* ==================================== */
+/* 8. 🔥ANIMACIÓN DIAGONAL FINAL Y REAL*/
+/* ==================================== */
+
+/* Misión: aparece desde la esquina inferior izquierda */
+.fade-in-left {
+    opacity: 0 !important;
+    transform: translate(-60px, 60px) !important;
+    transition: opacity 0.9s ease, transform 0.9s ease !important;
+}
+
+.fade-in-left.is-visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+/* Visión: aparece desde la esquina inferior derecha */
+.fade-in-right {
+    opacity: 0 !important;
+    transform: translate(60px, 60px) !important;
+    transition: opacity 0.9s ease, transform 0.9s ease !important;
+}
+
+.fade-in-right.is-visible {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+.donation-section {
+    background-color: #fff; 
+    color: var(--color-text); 
+    padding: 60px 0; /* Mantenemos este padding para el marco azul */
+}
+
+/* ⭐ CAMBIO SOLICITADO: TÍTULO PRINCIPAL A AZUL ⭐ */
+.section-title-with-lines {
+    color: var(--color-primary); /* ¡CLAVE: Cambiado a Azul Marino! */
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px !important; 
+}
+
+/* Rayas AHORA AZULES a ambos lados del título */
+.section-title-with-lines::before,
+.section-title-with-lines::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px; 
+    height: 3px;
+    background-color: var(--color-primary); /* ¡CLAVE: Cambiado a Azul Marino! */
+    transform: translateY(-50%);
+}
+
+.section-title-with-lines::before {
+    left: 0;
+    margin-left: calc(50% - 280px); 
+}
+
+.section-title-with-lines::after {
+    right: 0;
+    margin-right: calc(50% - 280px); 
+}
+
+/* Contenedor principal que envuelve el lado de cuentas, formulario y AHORA el impacto */
+.donation-form-container {
+    /* ⭐ CLAVE: Incrementa este valor a 1300px o más ⭐ */
+    max-width: 1300px; /* ¡Ahora es MUCHO más ancho! */
+    
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--color-background-light); 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nuevo estilo: Anular la restricción del contenedor general solo en la sección de donación */
+.donation-section .container {
+    max-width: 1400px; /* Le damos al contenedor padre un ancho mayor */
+    padding: 0 10px; /* Reducimos el padding horizontal para liberar espacio */
+}
+
+.top-donation-content {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px; /* Margen inferior para separar del contenido de apoyo */
+}
+
+/* Título de Apoyo: Centrado y Compacto */
+.impact-title-secondary {
+    color: var(--color-primary);
+    font-size: 1.8rem; /* Tamaño ajustado para ser compacto */
+    font-weight: 700;
+    text-align: center; 
+    margin-top: 10px;    
+    margin-bottom: 20px; 
+}
+
+/* Cuadrícula de Impacto (.values-grid): Ajuste de tamaño y centrado */
+.values-grid { 
+    display: grid;
+    /* Permite que los bloques sean un poco más grandes, min: 140px, max: 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    gap: 20px; /* Aumenta el espacio entre los bloques */
+    padding: 0 30px; /* Más padding a los lados dentro del cuadro blanco */
+    margin: 0 auto; 
+    max-width: 900px; /* Limita el ancho máximo para que no se extienda demasiado en pantallas grandes */
+}
+
+/* Estilo para cada Bloque de Apoyo (.value-card): Más grande */
+.value-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 15px; /* ⭐ CLAVE: Más padding interno para hacer la tarjeta más grande ⭐ */
+    background-color: var(--color-background-light); 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.value-card i {
+    font-size: 3em; /* ⭐ CLAVE: Ícono más grande (antes 2.2em) ⭐ */
+    color: var(--color-primary); /* ⭐ CLAVE: Ícono a color azul (antes dorado) ⭐ */
+    margin-bottom: 10px; /* Más espacio entre ícono y texto */
+}
+
+.value-card p {
+    font-size: 1rem; /* ⭐ CLAVE: Texto del párrafo más grande (antes 0.9rem) ⭐ */
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+}
+
+
+/* LADO IZQUIERDO: CUENTAS */
+.donation-account-side {
+    flex: 1;
+    color: var(--color-primary);
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+    display: flex;
+    justify-content: center; 
+}
+
+/* Contenedor para las dos tarjetas de cuentas (Separación de 40px) */
+.contribution-cards-group {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Separación aumentada entre tarjetas */
+    width: 100%; 
+    max-width: 400px; 
+}
+
+/* Estilo para cada tarjeta de cuenta (Doble Borde) */
+.account-card.contribution-card-v2 {
+    background-color: var(--color-background-light);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    border-left: 5px solid var(--color-secondary); /* Borde IZQUIERDO */
+    border-right: 5px solid var(--color-secondary); /* Borde DERECHO */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.account-card.contribution-card-v2:hover {
+    transform: translateY(-3px);
+}
+
+/* Estilo de Ícono */
+.account-card .card-icon {
+    font-size: 3em; 
+    color: var(--color-primary); 
+    margin-bottom: 15px;
+    background-color: var(--color-secondary); 
+    padding: 15px;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+/* Estilos de Título/Referencia del Versículo (Más grande y oscuro) */
+.account-card .card-title-verse {
+    font-family: var(--font-heading);
+    font-size: 1.6rem; /* Tamaño aumentado */
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+
+/* Estilos de Versículo (Más grande y oscuro) */
+.account-card .card-verse {
+    font-size: 1.3rem; /* Tamaño aumentado */
+    color: var(--color-text); 
+    margin-bottom: 20px;
+    line-height: 1.6; 
+    font-style: italic;
+    font-weight: 500; 
+}
+
+/* Estilo del botón */
+.account-button {
+    cursor: pointer;
+    margin-top: auto; 
+}
+
+/* LADO DERECHO: FORMULARIO */
+.donation-form {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.donation-form h3 {
+    color: var(--color-primary); 
+}
+
+/* Full-screen image overlay (Zoom) */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.fullscreen-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-overlay img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.close-button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: white;
+    font-size: 3em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.close-button:hover {
+    opacity: 1;
+}
+
+
+/* Media Query para responsividad (Mantenido y Ajustado) */
+
+@media (max-width: 800px) {
+    /* Ocultar las rayas amarillas en móvil si no hay espacio */
+    .section-title-with-lines::before,
+    .section-title-with-lines::after {
+        content: none; 
+    }
+}
+
+@media (max-width: 768px) {
+    .top-donation-content {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 20px;
+    }
+    .donation-account-side {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .donation-form {
+        padding-left: 0;
+    }
+    .donation-form-container {
+        padding: 20px;
+    }
+}
+/* ================================================= */
+/* 10. ANIMACIÓN DE ENTRADA AL SCROLL (DONACIÓN)       */
+/* ================================================= */
+
+/* Estado Inicial (Oculto) */
+.scroll-animate {
+    opacity: 0;
+    /* Ajustamos el transform a 'none' para que la transición de opacidad funcione primero en ciertos elementos */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animación de Subida (El estado inicial de transformación) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(15px); 
+    
+    /* CAMBIA ESTA LÍNEA (0.7s a 0.5s): */
+    transition: opacity 0.5s, transform 0.5s; /* ⭐ HACER MÁS RÁPIDO ⭐ */
+    
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Estado Final (Visible) */
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición normal */
+}
+
+/* Clases de Retraso (Para el efecto escalonado de las tarjetas) */
+.delay-200 { transition-delay: 0.2s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-800 { transition-delay: 0.8s; }
+
+/* ==================================== */
+/* 11. MODAL DE CONTACTO (Popup)        */
+/* ==================================== */
+
+/* Utilidad para ocultar elementos */
+.d-none {
+    display: none !important;
+}
+
+/* Base del Modal: cubre toda la pantalla y centra el contenido */
+.custom-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+
+    /* Centrado perfecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #fefefe;
+    width: 90%;
+    max-width: 600px;
+    margin: 0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    position: relative;
+
+    animation: fadeInModal 0.35s ease-out;
+
+    /* Para que el modal no se corte en pantallas pequeñas */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Animación de entrada */
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-25px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Botón de cerrar */
+.close-btn {
+    color: #888;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--color-primary);
+}
+
+/* Títulos */
+.modal-title, 
+.formulario-titulo {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+}
+
+/* ----------------------------------- */
+/* Selector de opciones inicial        */
+/* ----------------------------------- */
+
+.options-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-option {
+    flex: 1;
+    background-color: var(--color-background-light);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 20px 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-option:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 45, 98, 0.3);
+}
+
+.btn-option span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* ------------------------------------ */
+/* Selector de Teléfono                */
+/* ------------------------------------ */
+
+.phone-input-group {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.prefijo-display {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.prefijo-display:hover,
+.prefijo-display[aria-expanded="true"] {
+    background-color: #e8e8e8;
+    border-color: var(--color-secondary);
+}
+
+.prefijo-flag {
+    width: 25px;
+    height: 18px;
+    margin-right: 10px;
+    border: 1px solid #eee;
+}
+
+#prefijoTexto {
+    font-weight: 700;
+    margin-right: 10px;
+    color: var(--color-primary);
+}
+
+.prefijo-display .arrow {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+}
+
+.phone-input-group .form-control {
+    border-radius: 0 8px 8px 0;
+    border-left: 1px solid #ccc;
+    flex-grow: 1;
+}
+
+/* Dropdown */
+#prefijoDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    margin-top: 5px;
+    z-index: 1001;
+    display: none;
+}
+
+.prefijo-search {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+
+.prefijo-list {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Items dentro del dropdown */
+.prefijo-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.prefijo-item:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.prefijo-item .prefijo-flag {
+    margin-right: 10px;
+}
+
+.prefijo-item .code {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* ----------------------------------- */
+/* Responsive                          */
+/* ----------------------------------- */
+
+@media (max-width: 650px) {
+    .modal-content {
+        padding: 20px;
+    }
+    .options-container {
+        flex-direction: column;
+    }
+    #prefijoDropdown {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+
+/* ==================================== */
+/* 13. FOOTER - AJUSTE FINAL            */
+/* ==================================== */
+
+/* 🚨 DEFINICIÓN DE LA ANIMACIÓN (Sube y Baja) */
+@keyframes floatUpAndDown {
+    0% { transform: translateY(0px); }      
+    50% { transform: translateY(-3px); }    
+    100% { transform: translateY(0px); }    
+}
+
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding-top: 50px;
+    
+    -webkit-animation: floatUpAndDown 4s ease-in-out infinite; 
+    animation: floatUpAndDown 4s ease-in-out infinite; 
+    will-change: transform; 
+}
+
+/* 🚨 CLAVE: AJUSTE DE GRID (3 Columnas) */
+.footer-grid {
+    display: grid;
+    /* 1. Logo (Maranatha Aragua): Se queda fijo a 250px a la izquierda.
+    2. ¡Comunícate con Nosotros!: 2fr. Ocupa el DOBLE de espacio.
+    3. Síguenos: auto. Solo ocupa el espacio necesario a la derecha. 
+    Esto fuerza a la columna 2 a centrarse en un área más amplia. */
+    grid-template-columns: 250px 2fr auto; 
+    gap: 50px; /* 👈 Aumentamos el espacio (gap) entre las columnas para que no se vean estrechas */
+    padding-bottom: 30px;
+}
+
+/* 🚨 CLAVE: Columna 1 (Logo) - Mantener a la izquierda. No necesita text-align */
+.footer-grid > div:first-child {
+    text-align: left; /* Aseguramos la alineación a la izquierda */
+}
+
+/* 🚨 CLAVE: Columna 2 (Comunícate) - Centrar el contenido */
+.footer-grid > div:nth-child(2) {
+    text-align: center;
+}
+
+/* 🚨 CLAVE: Columna 3 (Síguenos) - Pegar a la derecha */
+.footer-grid > div:last-child {
+    text-align: right; 
+    padding-right: 15px; /* Mantener un pequeño margen del borde derecho */
+}
+
+.logo-footer {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer-col h4 {
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    display: inline-block; 
+    margin-bottom: 10px;
+    transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-accent);
+}
+
+/* 🚨 CLAVE: Íconos Sociales (Separación y Tamaño) */
+.social-links {
+    display: flex; 
+    justify-content: flex-end; /* Mantiene los íconos pegados a la derecha de la columna */
+    gap: 15px; /* 👈 Espacio entre íconos */
+}
+
+.social-links a {
+    color: var(--color-text-light);
+    font-size: 1.8rem; 
+    margin-right: 0; 
+    transition: color 0.3s;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center; 
+}
+
+/* ==================================== */
+/* 14. AJUSTES RESPONSIVE               */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr; /* Pasa a una sola columna apilada en móvil */
+        gap: 30px; /* Reducir el espacio en móvil */
+    }
+    
+    .footer-grid > div { 
+        text-align: center; /* Centrar todas las columnas en móvil */
+        padding-right: 0; 
+    }
+
+    .social-links {
+        justify-content: center; /* Centrar los íconos sociales en móvil */
+    }
+}
+
+/* ==================================== */
+/* 15. ANIMACIONES PREMIUM (CSS)         */
+/* ==================================== */
+
+/* Estilos iniciales para ocultar elementos que se animarán */
+.reveal, .reveal-left, .reveal-right, .reveal-zoom,
+.fade-in-up, .delay-1, .delay-2, .delay-3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Variaciones de transformación */
+.reveal-left { transform: translateX(-50px); }
+.reveal-right { transform: translateX(50px); }
+.reveal-zoom { transform: scale(0.9); }
+
+/* Clases que se añadirán con JavaScript cuando el elemento entre en el viewport */
+.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Retrasos de animación (para hacer la entrada más escalonada) */
+.delay-1.is-visible { transition-delay: 0.1s; }
+.delay-2.is-visible { transition-delay: 0.2s; }
+.delay-3.is-visible { transition-delay: 0.3s; }
+
+/* Para los elementos iniciales del Hero, se añaden las clases "is-visible" con JS al cargar */
+.hero-content .fade-in-up {
+    transform: translateY(30px);
+}
+
+/* ==================================== */
+/* 16. RESPONSIVE (Móvil)               */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    
+    /* 1. Títulos más pequeños en móvil */
+    .section-title, .section-title-with-lines {
+        font-size: 2rem;
+    }
+    
+    /* 2. El cuadro de donaciones se adapta mejor en móvil */
+    .donation-form-container {
+        padding: 30px 20px; 
+        max-width: 95%; 
+    }
+    
+    /* 3. Ajuste de las rejillas de apoyo (Con Tu Donación...) */
+    .values-grid { 
+        padding: 0 10px; 
+        /* ⭐ CLAVE: Cambia esta línea para forzar 2 columnas en móvil ⭐ */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    /* Mantenemos los estilos anteriores de responsividad si no los habías incluido antes */
+    .top-donation-content {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 20px;
+    }
+    .donation-account-side {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .donation-form {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    h1 { font-size: 3rem; }
+    .hero-section { height: 60vh; }
+    .mission-grid { flex-direction: column; }
+    .donation-form-container { flex-direction: column; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .logo-col { grid-column: 1 / -1; } /* Logo ocupa todo el ancho */
+}
+
+@media (max-width: 768px) {
+    
+    /* 🚨 AJUSTES PARA COMPACTAR EL ENCABEZADO (Aumentar Padding) */
+    .main-header .header-content {
+        /* Aumenta el padding para dar espacio al logo más grande */
+        padding: 14px 20px; 
+    }
+    
+    .main-header .logo {
+        /* Aumenta la altura del logo móvil */
+        height: 45px; 
+        /* Aplica margen negativo para que sobresalga */
+        margin-top: -8px; 
+        margin-bottom: -8px;
+    }
+    
+    /* ===== MENU EN ESCRITORIO ===== */
+    .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    }
+
+    .main-nav .nav-link {
+    margin: 0;
+    padding: 10px 15px;
+    display: inline-block;
+}
+    
+    .main-nav .nav-link {
+        color: var(--color-text-light); /* Hacemos los enlaces blancos */
+        margin: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+    .main-nav .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    .cta-outline {
+    padding: 10px 25px;
+    font-weight: 700;
+    border: 2px solid #f7e94a; /* Borde amarillo */
+    color: #f7e94a !important; /* Texto amarillo */
+    background: transparent;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    }
+
+    .cta-outline:hover {
+    background: #f7e94a;   /* Amarillo */
+    color: #002d62 !important; /* Azul marino */
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+/* ==================================== */
+/* 17. CARRUSEL DE PAÍSES               */
+/* ==================================== */
+
+/* Contenedor principal de la sección */
+.client-slider-section {
+    background-color: var(--color-background-light); 
+    padding: 60px 0; 
+    overflow: hidden; 
+    white-space: nowrap; 
+}
+
+/* Pista de animación que contiene todos los iconos */
+.client-slider-track {
+    display: inline-block;
+    animation: scroll-icons 40s linear infinite;
+}
+
+/* Contenedor de cada país (Mantenemos el ancho para el carrusel) */
+.client-logo-wrapper {
+    display: inline-block;
+    text-align: center;
+    width: 200px; /* Ancho fijo del slot en el carrusel */
+    margin: 0 10px;
+    padding: 15px 10px;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: normal;
+    transition: transform 0.3s ease;
+}
+
+/* 💥 ESTADO INICIAL (IMAGEN SVG GRIS y GRANDE) */
+.country-flag-svg {
+    /* Tamaño grande de bandera */
+    width: 8rem; 
+    height: 6rem;
+    display: block;
+    margin: 0 auto 5px; 
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* 🚨 CLAVE: Convierte la imagen a GRIS y la hace semitransparente */
+    filter: grayscale(100%);
+    opacity: 0.6; 
+    
+    /* Agregamos 'filter' para la transición suave de gris a color */
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Define la imagen de contorno (.svg o .png) para cada país */
+/* NOTA: He mantenido tus rutas a la carpeta 'img' y los nombres de archivo. */
+.outline-es { background-image: url('img/españa.jpg'); }
+.outline-mx { background-image: url('img/mexico.jpg'); }
+.outline-co { background-image: url('img/colombia.jpg'); } 
+.outline-ar { background-image: url('img/argentina.jpg'); }
+.outline-us { background-image: url('img/usa.jpg'); } 
+.outline-ve { background-image: url('img/venezuela.jpg'); } 
+.outline-ec { background-image: url('img/ecuador.jpg'); }
+.outline-pa { background-image: url('img/panama.jpg'); } 
+.outline-br { background-image: url('img/brazil.png'); }
+.outline-cl { background-image: url('img/chile.jpg'); } 
+.outline-cr { background-image: url('img/costa rica.jpg'); } 
+
+/* Estilo del texto bajo el SVG */
+.client-logo-wrapper p {
+    font-size: 0.9rem;
+    color: var(--color-text); 
+    opacity: 0.8;
+}
+
+/* 🚀 EFECTO HOVER BASE (RECUPERA COLOR Y ESCALA) */
+.client-logo-wrapper:hover .country-flag-svg {
+    /* 🚨 CLAVE: Quita el filtro GRIS para mostrar los colores originales */
+    filter: none; 
+    opacity: 1; 
+    transform: scale(1.05);
+}
+
+/* ------------------------------------ */
+/* 18. ✨ BRILLOS DE COLOR POR PAÍS    */
+/* ------------------------------------ */
+
+/* Argentina: Azul Celeste (74ACDF) */
+.flag-ar:hover .country-flag-svg {
+    box-shadow: 
+        0 0 15px rgba(116, 172, 223, 0.8), 
+        0 0 30px rgba(116, 172, 223, 0.5);
+}
+
+/* Colombia: Amarillo, Azul y Rojo (Glow triple) */
+.flag-co:hover .country-flag-svg {
+    box-shadow: 
+        0 0 10px 2px rgba(252, 209, 22, 0.8),  /* Amarillo */
+        0 0 20px 5px rgba(0, 56, 147, 0.7),   /* Azul */
+        0 0 30px 8px rgba(206, 17, 38, 0.6);  /* Rojo */
+}
+
+/* España: Rojo y Amarillo (Usamos el rojo principal para el glow) */
+.flag-es:hover .country-flag-svg {
+    box-shadow: 
+        0 0 15px rgba(170, 21, 46, 0.8), /* Rojo */
+        0 0 30px rgba(170, 21, 46, 0.5);
+}
+
+/* México: Verde */
+.flag-mx:hover .country-flag-svg {
+    box-shadow: 
+        0 0 15px rgba(0, 104, 71, 0.8), /* Verde */
+        0 0 30px rgba(0, 104, 71, 0.5);
+}
+
+/* Estados Unidos: Azul Marino */
+.flag-us:hover .country-flag-svg {
+    box-shadow: 
+        0 0 15px rgba(60, 59, 110, 0.8), /* Azul Marino */
+        0 0 30px rgba(60, 59, 110, 0.5);
+}
+
+.client-logo-wrapper:hover {
+    transform: translateY(-5px); 
+}
+
+/* 🚀 ANIMACIÓN INFINITA */
+@keyframes scroll-icons {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); 
+    }
+}
+
+/* ==================================== */
+/* 19. ESTILOS DEL MODAL                */
+/* ==================================== */
+
+/* Fondo Oscuro que cubre toda la pantalla */
+.custom-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+    padding-top: 50px;
+    animation: fadeIn 0.3s;
+}
+
+/* Contenido del Modal (El Panel Central) */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto; /* Centrar vertical y horizontalmente */
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px; /* Ancho máximo para que no sea demasiado grande */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s;
+}
+
+/* Botón de Cerrar (X) */
+.close-btn {
+    color: var(--color-text);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Títulos y Texto */
+.modal-title {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos de Utilidad */
+.d-none {
+    display: none !important;
+}
+
+/* ------------------------------------ */
+/* 20. ✨ESTILOS DEL SELECTOR DE FORMULARIO */
+/* ------------------------------------ */
+
+.options-container.selector-panel {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-option {
+    flex-grow: 1;
+    padding: 20px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.btn-option span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666;
+}
+
+.btn-option:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 45, 98, 0.3);
+}
+
+.btn-option.selected {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(0, 45, 98, 0.5);
+}
+
+.btn-option.selected span {
+    color: var(--color-text-light);
+}
+
+/* Contenedor del formulario después de la selección */
+.modal-form-selection {
+    padding: 10px 0;
+}
+
+.formulario-titulo {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Estilos de Formulario (Ajuste para compatibilidad con el nuevo HTML) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea,
+.form-control { /* Usamos .form-control para los inputs genéricos */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-family: var(--font-body);
+}
+
+.modal-form-selection .btn-primary {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+/* ------------------------------------ */
+/* 21. ✨ ESTILOS DEL SELECTOR DE TELÉFONO */
+/* ------------------------------------ */
+.phone-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.prefijo-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.prefijo-display:hover {
+    background-color: #eee;
+}
+
+.prefijo-flag {
+    width: 25px;
+    height: 18px;
+    border: 1px solid #ccc;
+}
+
+#prefijoTexto {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-right: 5px;
+}
+
+.arrow {
+    font-size: 0.8rem;
+    transform: rotate(0);
+    transition: transform 0.3s;
+}
+
+.prefijo-display[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+.phone-input-group .form-control {
+    border-radius: 0 5px 5px 0;
+    flex-grow: 1;
+}
+
+/* Dropdown de la lista de países */
+.prefijo-dropdown {
+    position: absolute;
+    width: 300px; /* Ancho fijo para el dropdown */
+    max-height: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* Asegura que esté por encima de todo */
+    display: none;
+    overflow: hidden;
+}
+
+.prefijo-search {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1rem;
+}
+
+.prefijo-list {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.prefijo-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.prefijo-item:hover, .prefijo-item.highlighted {
+    background-color: #f0f8ff;
+}
+
+.prefijo-item img {
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+.prefijo-item .name {
+    flex-grow: 1;
+}
+
+.prefijo-item .code {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Estilos para el campo de teléfono de Miembros que no tiene el selector complejo */
+.input-group {
+    display: flex;
+    width: 100%;
+}
+
+.input-group-text {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #f8f8f8;
+    color: #666;
+    font-weight: 600;
+    align-items: center;
+    display: flex;
+}
+.input-group .form-control {
+    border-radius: 0 5px 5px 0;
+}
+
+
+/* Animaciones del Modal */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+/* Media Query para el selector de botón en móvil */
+@media (max-width: 500px) {
+    .options-container.selector-panel {
+        flex-direction: column;
+    }
+    .modal-content {
+        margin: 15% auto;
+    }
+}
+
+/* ==================================== */
+/* 22. ESTILOS DE LA SECCIÓN CONTADOR   */
+/* ==================================== */
+
+.countdown-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-background-light); /* Fondo claro para destacar */
+}
+
+.countdown-title {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Para que se adapte bien en móvil */
+}
+
+.timer-box {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+}
+
+.timer-box .number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.timer-box .label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/* ==================================== */
+/* 23. CONTADOR DE IMPACTO (Nuevo Diseño)*/
+/* ==================================== */
+.impact-section {
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden; 
+    background-color: var(--color-primary); 
+    color: var(--color-text-light); 
+}
+
+/* Animación Perpetua de Fondo (Solicitado: 'siempre activas') */
+.animated-background-container {
+    background: linear-gradient(135deg, rgba(0, 45, 98, 1) 0%, rgba(30, 80, 140, 1) 50%, rgba(0, 45, 98, 1) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 20s ease infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.impact-section .section-title {
+    color: var(--color-secondary); 
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    position: relative;
+}
+/* Estilo de subrayado brillante para el título */
+.impact-section .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-secondary);
+    margin: 10px auto 0;
+    box-shadow: 0 0 10px var(--color-secondary);
+    border-radius: 2px;
+}
+
+.counter-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.counter-item {
+    flex-basis: 30%; 
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo y Animación Hover */
+.counter-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 25px 5px var(--color-secondary); 
+}
+
+.counter-item i {
+    font-size: 3rem;
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+    /* Animación constante de Icono (Solicitado: 'siempre activas') */
+    animation: iconPulse 4s infinite ease-in-out;
+}
+.counter-item:nth-child(2) i { animation-delay: 0.5s; }
+.counter-item:nth-child(3) i { animation-delay: 1s; }
+
+@keyframes iconPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.counter-item .count-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.counter-item p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Media Query para móvil */
+@media (max-width: 768px) {
+    .counter-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .counter-item {
+        flex-basis: 100%;
+    }
+}
+/* ====== MENÚ MÓVIL (DESPLEGABLE CORRECTO) ====== */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-primary);
+        flex-direction: column;
+        display: none;
+        padding: 15px 0;
+    }
+
+    .main-nav.is-open {
+        display: flex;
+    }
+
+        .main-nav .nav-link {
+            margin: 10px 0;
+            padding: 10px 20px;
+            width: 100%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
+            text-align: center;
+            color: #fff;
+        }
+
+    .main-nav .nav-link:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ===============================   */
+/* 24. SECCIÓN FOOTER AJUSTE GENERAL */
+/* ===============================   */
+
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background: #020226;
+    color: #ffffff;
+    border-top: 2px solid rgba(255,255,255,0.1);
+}
+
+footer p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+footer .footer-social {
+    margin-top: 15px;
+}
+
+footer .footer-social a {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 1.4rem;
+    transition: 0.3s ease;
+}
+
+footer .footer-social a:hover {
+    color: #ffd700;
+}
+
+/* ==================================== */
+/* 25. SECCIÓN LÍDERES                   */
+/* ==================================== */
+
+.lideres-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.lideres-grid {
+    display: grid;
+    /* Define 4 columnas en pantallas grandes */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.leader-card {
+    /* ⭐ 1. CAMBIO DE FONDO A OSCURO (Gris/Azul Profundo) ⭐ */
+    background-color: var(--color-primary); /* Usando tu azul marino profundo */
+    padding: 25px; /* Aumentamos un poco el padding */
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más fuerte para que resalte */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Estilos de animación inicial: Oculto y fuera de posición */
+    opacity: 0;
+    transform: translateX(0); /* Estado base */
+}
+
+.leader-card:hover {
+    transform: translateY(-8px); /* ⭐ Hacemos que resalte un poco más en el hover ⭐ */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra aún más visible al pasar el mouse */
+}
+
+/* ======================================================
+   DEBUG: Outlines para la galería (activar con ?debug_grid=1)
+   Añadimos esto para diagnosticar overlapping sin romper estilos.
+   ====================================================== */
+.gallery-debug-outline .gallery-item {
+    outline: 2px dashed rgba(255,0,0,0.85);
+    /* Evitar que el outline afecte el tamaño usando outline, no border */
+}
+.gallery-debug-outline {
+    position: relative; /* asegura contexto */
+}
+
+.leader-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 4px solid var(--color-secondary); /* Acento Dorado */
+}
+
+.leader-name {
+    font-family: var(--font-heading);
+    color: var(--color-text-light); /* ⭐ Letras Blancas para contraste ⭐ */
+    margin-bottom: 5px;
+    font-size: 1.5rem; /* Hacemos el nombre un poco más grande */
+}
+
+.leader-title {
+    /* ⭐ 2. COLOR DIFERENTE Y MÁS GRANDE PARA RESALTAR EL CARGO ⭐ */
+    color: var(--color-secondary); /* Color Dorado */
+    font-size: 1.1rem; /* Más grande que el 0.95rem anterior */
+    font-weight: 700; /* Negrita para mayor énfasis */
+    margin-bottom: 10px;
+}
+
+.leader-bio {
+    font-size: 1rem;
+    color: var(--color-text-light); /* ⭐ Letras claras para que sean legibles en fondo oscuro ⭐ */
+    margin-top: 10px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* ESTILOS DE ANIMACIÓN DE ENTRADA (Mantiene la misma lógica) */
+
+.leader-card-left {
+    transform: translateX(-50px);
+}
+.leader-card-right {
+    transform: translateX(50px);
+}
+
+.leader-card.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1s ease-out; 
+}
+
+
+/* Adaptación Responsiva */
+@media (max-width: 992px) {
+    .lideres-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .lideres-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* ====================================     */
+/* 26. Ajuste de Altura para Citas Bíblicas */
+/* ====================================     */
+
+.donation-form-container p {
+    /* 1. CLAVE: Reduce el espacio entre líneas para compactar verticalmente. */
+    line-height: 1.15; /* Cambiado a un valor bajo para que las líneas estén más pegadas */
+    
+    /* 2. CLAVE: Reduce el espacio vacío después de cada cita (párrafo). */
+    margin-bottom: 3px; /* Reducido de un valor por defecto alto a solo 5px */
+    
+    /* 3. Opcional: Para mayor compacidad, haz el texto ligeramente más pequeño. */
+    font-size: 0.95rem;
+}
+
+.account-card .account-button + .account-button {
+    margin-top: 20px; /* puedes subirlo a 25px o bajarlo a 15px */
+}
+
+/* ==================================== */
+/* 27. AJUSTE DE NAVEGACIÓN COMPACTA (Solo para Index) */
+/* ==================================== */
+
+/* CORRECCIÓN: Seleccionamos directamente los enlaces .nav-link dentro del nav compacto */
+.main-header .nav-index-compact .nav-link {
+    /* CLAVE 1: Reducir la fuente a un tamaño visible y funcional (0.88rem) */
+    font-size: 1.1rem; /* Si aún no cabe, prueba con 0.85rem */
+    
+    /* CLAVE 2: Reducir el margen horizontal entre enlaces (de 25px a 15px) */
+    margin-left: 15px; 
+    
+    /* Opcional: Reducir el padding para ganar un poco más de espacio dentro de cada botón */
+    padding: 8px 10px; 
+}
+
+/* Para la vista móvil (cuando se convierte a menú hamburguesa), mantiene el tamaño original */
+@media (max-width: 992px) {
+    .main-header .nav-index-compact .nav-link {
+        font-size: 1rem; /* Vuelve al tamaño estándar si el menú se colapsa */
+        margin-left: 0; 
+        padding: 10px 15px; 
+    }
+}
+
+/* ==================================== */
+/* 28. NUESTROS HORARIOS                */
+/* ==================================== */
+
+#horarios {
+    background-color: var(--color-background-light); 
+}
+
+.horarios-grid {
+    /* Muestra las tarjetas en una fila horizontal */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 30px; 
+    margin-top: 40px;
+}
+
+.horario-item {
+    flex: 1;
+    max-width: 350px;
+    background-color: white;
+    padding: 0; 
+    /* Borde redondeado (Curvatura del marco amarillo) */
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* BORDES AMARILLOS MÁS GRUESOS */
+    border: 8px solid var(--color-secondary); 
+    cursor: pointer; 
+    
+    /* Base para animación */
+    opacity: 0;
+    transform: none; 
+}
+
+.horario-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Oculta los elementos de texto si quedan por error */
+.horario-item h3, 
+.horario-item p {
+    display: none !important; 
+}
+
+
+/* --- ESTILOS PARA LAS IMÁGENES --- */
+
+.horario-img-container {
+    width: 100%; 
+    height: 250px; 
+    margin: 0; 
+    overflow: hidden; 
+    /* CENTRADO DE IMAGEN */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.horario-img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+    /* --- ¡CAMBIO CLAVE AQUÍ! Curvatura en la imagen (18px) --- */
+    border-radius: 18px; 
+}
+
+/* Efecto de zoom suave al pasar el mouse (Hover) */
+.horario-item:hover .horario-img {
+    transform: scale(1.05);
+}
+
+
+/* --- ESTILOS DE ANIMACIÓN PERSONALIZADOS y RESPONSIVIDAD (Mantenidos) --- */
+
+.horario-item.reveal-bottom {
+    transform: translateY(50px);
+}
+
+.horario-item.reveal-left {
+    transform: translateX(-50px);
+}
+.horario-item.reveal-right {
+    transform: translateX(50px);
+}
+
+.horario-item.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: all 1.2s ease-out;
+}
+
+@media (max-width: 768px) {
+    .horarios-grid {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .horario-item {
+        max-width: 100%;
+    }
+}
+
+/* ==================================== */
+/* 29. REDES SOCIALES (Valores convertidos) */
+/* ==================================== */
+
+/* Ajustes para que el enlace se vea como tarjeta */
+.value-card {
+    text-decoration: none; /* Elimina el subrayado por defecto */
+    color: var(--color-text); /* Asegura que el texto mantenga su color */
+    display: block; 
+    /* Si había estilos de animación previos, los eliminamos para asegurar */
+    animation: none !important;
+}
+
+/* Colores de marca para los iconos */
+
+/* Instagram: Usamos un gradiente solo para el ícono */
+.value-card:nth-child(1) .fa-instagram {
+    /* El gradiente es una aproximación visual y requiere prefijos para compatibilidad. */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #d6249f; /* Color de fallback para navegadores antiguos */
+}
+
+/* YouTube: Rojo */
+.value-card:nth-child(2) .fa-youtube {
+    color: #FF0000; 
+}
+
+/* Facebook: Azul */
+.value-card:nth-child(3) .fa-facebook-f {
+    color: #3b5998; 
+}
+
+/* TikTok: Negro */
+.value-card:nth-child(4) .fa-tiktok {
+    color: #000000; 
+}
+
+/* Efecto visual al pasar el mouse por el icono */
+.value-card:hover .value-icon {
+    /* Mantenemos el efecto de hover */
+    transform: scale(1.1); 
+    transition: transform 0.3s ease;
+}
+
+/* ==================================== */
+/* 30. SOLUCIÓN FINAL: CENTRADO DE HORARIOS EN MÓVIL */
+/* ==================================== */
+
+/* 1. Centrar el contenedor del horario en pantallas pequeñas */
+@media (max-width: 767px) {
+    /* Seleccionamos el contenedor de cada imagen de horario */
+    .horario-item {
+        /* Fuerza a que el elemento ocupe todo el ancho para que el contenido dentro se centre */
+        width: 100%; 
+        
+        /* Centra el elemento en sí, si es un bloque con ancho limitado. */
+        margin-left: auto !important; /* El !important anula reglas de Bootstrap/otras */
+        margin-right: auto !important;
+        
+        /* Centra el contenido dentro del .horario-item */
+        text-align: center !important; 
+        
+        /* Aseguramos que los divs dentro también se centren */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    /* 2. Centrar la imagen dentro del .horario-item */
+    .horario-item img {
+        display: block;
+        margin: 0 auto !important; /* Anula cualquier margen forzado y centra la imagen */
+    }
+    
+    /* 3. Anular las animaciones que fuerzan la alineación solo en móvil */
+    .horario-item.reveal-left,
+    .horario-item.reveal-right {
+        /* Si estas clases tienen `transform: translateX(...)` o `float: left/right` */
+        /* Estas propiedades deberían estar en la media query de escritorio, pero si están afectando en móvil: */
+        transform: none !important; 
+        float: none !important;
+    }
+}
+
+/* ==================================== */
+/* 31. EVENTOS – TARJETAS FLIP 3D       */
+/* ==================================== */
+
+/* GRID DE TARJETAS */
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* TARJETA – CONTENEDOR PRINCIPAL */
+.evento-card {
+    width: 100%;
+    height: 190px;              /* ← MÁS RECTANGULAR Y PEQUEÑA */
+    perspective: 1100px;
+    cursor: pointer;
+}
+
+/* TARJETA INTERIOR – EFECTO GIRO */
+.evento-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.9s ease;
+    transform-style: preserve-3d;
+}
+
+/* ACTIVACIÓN DEL GIRO */
+.evento-card.flip .evento-inner {
+    transform: rotateY(180deg);
+}
+
+/* LADO FRONTAL – TEXTO DEL MES */
+.evento-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 14px;
+    backface-visibility: hidden;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;           /* ← MÁS PEQUEÑO */
+    font-weight: 800;
+    letter-spacing: 2px;
+    border: 4px solid var(--color-secondary);
+    padding: 10px;
+}
+
+/* LADO TRASERO – IMAGEN */
+.evento-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border: 4px solid var(--color-secondary);
+}
+
+.evento-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* GIRO AUTOMÁTICO EN PC */
+.evento-card:hover .evento-inner {
+    transform: rotateY(180deg);
+}
+
+/* Cuando la tarjeta está bloqueada (clic), el hover NO debe hacer nada */
+.evento-card.locked:hover .evento-inner {
+    transform: none !important;
+}
+
+
+/* MÓVIL – desactivar hover */
+@media (max-width: 768px) {
+    .evento-card:hover .evento-inner {
+        transform: none;
+    }
+}
+
+/* 31-B. AJUSTES IMAGEN PRINCIPAL       */
+
+.hero-image-banner {
+    max-width: 520px;                 /* ← MÁS PEQUEÑA */
+    margin-top: 20px;
+    animation: bounceHero 2.5s infinite ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ANIMACIÓN REBOTE */
+@keyframes bounceHero {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+    /* ==================================== */
+    /* 1. VARIABLES Y RESET GENERAL (Asegure que su :root esté aquí) */
+    /* ==================================== */
+
+    /* NOTA: Asegúrese de que sus variables globales estén definidas en la parte superior del archivo. */
+
+    body {
+        font-family: var(--font-body);
+        /* CAMBIO GLOBAL: Color de texto oscuro por defecto */
+        color: var(--color-text); 
+        line-height: 1.6;
+        /* CAMBIO GLOBAL: Fondo blanco para toda la página */
+        background-color: var(--color-background-light); 
+    }
+
+    /* ==================================== */
+    /* EVANGELISMO - SECCIÓN PRINCIPAL      */
+    /* ==================================== */
+
+    /* 1. CLASE ÚNICA para el Contenedor Principal */
+    .evangelismo-seccion-principal {
+        position: relative;
+        width: 100%;
+        min-height: 100vh; 
+        display: flex;
+        align-items: flex-start; /* Correcto, alineado arriba */
+        justify-content: center;
+        text-align: center;
+        /* El color de texto es el color primario (Azul Marino) */
+        color: var(--color-primary); 
+        background-color: var(--color-background-light); /* Fondo explícito claro */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 0px 0; 
+    }
+
+    /* 2. CLASE ÚNICA para la Capa Oscura (Reducida para fondo claro) */
+    .evangelismo-capa-oscura {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Reducimos la opacidad para que sea muy sutil o casi invisible en fondo claro */
+        background-color: rgba(0, 45, 98, 0.05); 
+        z-index: 1;
+    }
+
+    /* 3. CLASE ÚNICA para el Contenedor de Ancho Limitado (Se mantiene igual) */
+    .evangelismo-contenedor-centrado {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* 4. CLASE ÚNICA para el Contenido */
+    .evangelismo-contenido-principal {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        /* CAMBIO CLAVE 1: Mueve el contenido MÁS ARRIBA (de 150px a 100px) */
+        padding-top: 10px; 
+    }
+
+    /* 5. CLASE ÚNICA para el Título Principal */
+    .evangelismo-titulo-principal {
+        font-size: 3rem; 
+        /* Color VERDE solicitado para el título principal */
+        color: #014201; 
+        text-shadow: none;
+        margin-bottom: 0px; 
+    }
+
+    /* 6. CLASE ÚNICA para el contenedor de la imagen rectangular */
+    .evangelismo-contenedor-imagen {
+        width: 100%;             
+        max-width: 700px; 
+        height: 350px;    
+        
+        margin: 40px auto 0 auto; 
+        
+        border-radius: 10px;     
+        overflow: hidden;        
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+        
+        animation: heartbeat 5s infinite ease-in-out; 
+    }
+
+    /* Línea de acento (Dorado) debajo del título de la sección */
+    .evangelismo-titulo-principal::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 4px;
+        background-color: var(--color-secondary); /* Dorado */
+        margin: 10px auto 0 auto;
+        border-radius: 2px;
+    }
+
+    /* Estilo para la imagen dentro de su contenedor */
+    .evangelismo-contenedor-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+
+    /* 7. CLASE ÚNICA para el subtítulo/verso debajo del título principal */
+.evangelismo-subtitulo-verso {
+    /* CAMBIO 1: Aumentamos el tamaño de la fuente */
+    font-size: 1.5rem; 
+    
+    font-family: var(--font-body);
+    
+    /* CAMBIO 2: Hacemos el color más oscuro (usando el verde de los títulos) */
+    color: #014201; 
+    
+    /* CAMBIO 3: Hacemos la fuente un poco más gruesa (Semi-bold) */
+    font-weight: 600; 
+
+    max-width: 600px;
+    
+    /* Espaciado: 20px arriba, 30px abajo (separando de la imagen) */
+    margin: 20px auto 30px auto; 
+    
+    line-height: 1.5;
+    font-style: italic; 
+}
+
+    /* ==================================== */
+    /* ANIMACIÓN DE LATIDO (Heartbeat) CORREGIDA */
+    /* ==================================== */
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.02); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.02); }
+        60% { transform: scale(1); }
+        100% { transform: scale(1); }
+    }
+
+    /* ==================================== */
+    /* SECCIÓN 2: AVIVAMIENTO MUNDIAL (REUTILIZACIÓN DE CLASES) */
+    /* ==================================== */
+
+    /* Nueva Clase ÚNICA para el padding entre secciones (Sección 2) */
+    .evangelismo-section-padding {
+    /* CAMBIO CLAVE: Reducimos el padding superior de 90px a 60px para cerrar el espacio */
+    padding: 60px 0 80px 0; 
+    
+    text-align: center;
+    background-color: var(--color-background-light); 
+    color: var(--color-text);
+}
+
+    /* Nueva Clase ÚNICA para el Título Secundario (h2) */
+    .evangelismo-titulo-secundario {
+        font-size: 3rem; 
+        font-family: var(--font-heading);
+        
+        /* Color VERDE solicitado para el título secundario */
+        color: #014201; 
+        
+        margin-bottom: 40px;
+        padding-bottom: 10px;
+        display: inline-block; 
+    }
+
+    /* Línea de acento (Dorado) debajo del título de la sección */
+    .evangelismo-titulo-secundario::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 4px;
+        background-color: var(--color-secondary); /* Dorado */
+        margin: 10px auto 0 auto;
+        border-radius: 2px;
+    }
+
+    /* CLASE ÚNICA para el Contenedor de la Segunda Sección (Añadir o confirmar) */
+.evangelismo-contenido-secundario {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+
+    /* CORRECCIÓN DE ESTRUCTURA Y MÓVIL */
+    /* ==================================== */
+
+    /* Esta regla anula el 'min-height: 100vh' de la sección principal para la Sección 2 */
+    .evangelismo-seccion-principal.evangelismo-section-padding {
+        min-height: auto; 
+    }
+
+    /* Adaptación móvil */
+    @media (max-width: 768px) {
+        .evangelismo-titulo-principal,
+        .evangelismo-titulo-secundario {
+            font-size: 2.5rem;
+        }
+    }
+
+/* ==================================== */
+/* EVANGELISMO - TRES ACTIVIDADES (TARJETAS) */
+/* ==================================== */
+
+/* Ajuste para el Título Secundario - Asegura el centrado */
+.evangelismo-titulo-secundario {
+    /* Mantenemos los estilos existentes de tipografía y color, pero agregamos el centrado */
+    text-align: center; 
+    display: block; /* Ocupa todo el ancho necesario para el centrado */
+    /* Otros estilos (color, fuente, etc.) provienen de la definición anterior en styles.css */
+}
+
+/* Contenedor Grid para las 3 tarjetas (Formato 1-2-3 en PC) */
+.evangelismo-actividades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas de igual ancho */
+    gap: 30px; /* Espacio entre tarjetas */
+    max-width: 1200px;
+    margin: 30px auto 60px auto; 
+    padding: 0 20px;
+}
+
+/* Estilo de la tarjeta individual */
+.evangelismo-actividad-card {
+    /* CAMBIO 1: Fondo verde oscuro/casi negro */
+    background-color: #1E2824; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra para el fondo oscuro */
+    text-align: center;
+    overflow: hidden; 
+    padding-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.evangelismo-actividad-card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- CENTRAR TÍTULOS Y VERSÍCULOS --- */
+.evangelismo-subtitulo-verso,
+.evangelismo-titulo-secundario,
+.evangelismo-titulo-principal {
+    text-align: center !important;
+}
+
+/* --- TARJETAS: TEXTO BLANCO --- */
+.actividad-titulo {
+    color: #FFFFFF !important;
+}
+
+.actividad-texto {
+    font-size: 1rem;
+    color: #FFFFFF !important;
+    padding: 0 15px;
+    line-height: 1.4;
+}
+
+/* --- MISMA ALTURA PARA TODAS LAS IMÁGENES --- */
+.actividad-photo {
+    width: 100%;
+    height: 180px !important; /* ajusta a 160 si quieres más delgado */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 15px;
+}
+
+/* ===================================== */
+/* TARJETAS AJUSTADAS SOLO EN MÓVILES   */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+    .evangelismo-actividades-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 0 10px;
+    }
+
+    /* TARJETAS — un poco más anchas */
+    .evangelismo-actividad-card {
+        width: 85% !important;   /* 🔥 MÁS ANCHAS */
+        max-width: 550px;        /* Un poco más largas también */
+    }
+
+    /* IMÁGENES — un poco más altas */
+    .actividad-photo {
+        height: 270px !important; /* 🔥 Más largas */
+    }
+}
+
+/* ========================================================= */
+/*      ESTADO INICIAL PARA TODAS LAS ANIMACIONES            */
+/* ========================================================= */
+
+.anim-always-up,
+.anim-from-top-left,
+.anim-from-top-right,
+.anim-from-bottom {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+    animation-fill-mode: forwards;
+}
+
+/* ========================================================= */
+/*               ANIMACIONES FULL PARA TU PÁGINA             */
+/* ========================================================= */
+
+/* Suave subida general (títulos y versículos) */
+.anim-always-up {
+    animation: smoothUp 1.4s ease forwards;
+}
+@keyframes smoothUp {
+    0% { opacity: 0; transform: translateY(25px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Desde esquina superior izquierda */
+.anim-from-top-left {
+    animation: topLeft 1.3s ease forwards;
+}
+@keyframes topLeft {
+    0% { opacity: 0; transform: translate(-40px, -40px) scale(.95); }
+    100% { opacity: 1; transform: translate(0,0) scale(1); }
+}
+
+/* Desde esquina superior derecha */
+.anim-from-top-right {
+    animation: topRight 1.3s ease forwards;
+}
+@keyframes topRight {
+    0% { opacity: 0; transform: translate(40px, -40px) scale(.95); }
+    100% { opacity: 1; transform: translate(0,0) scale(1); }
+}
+
+/* De abajo hacia arriba */
+.anim-from-bottom {
+    animation: bottomUp 1.3s ease forwards;
+}
+@keyframes bottomUp {
+    0% { opacity: 0; transform: translateY(45px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================= */
+/*                 HOVER SUAVE PARA TARJETAS                 */
+/* ========================================================= */
+
+.evangelismo-actividad-card {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.evangelismo-actividad-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+.anim-always-up,
+.anim-from-top-left,
+.anim-from-bottom,
+.anim-from-top-right {
+    opacity: 0;
+    transform: translateY(40px); /* movimiento inicial */
+}
+
+.anim-always-up.active {
+    animation: smoothUp 1.4s ease forwards;
+}
+
+.anim-from-top-left.active {
+    animation: topLeft 1.3s ease forwards;
+}
+
+.anim-from-bottom.active {
+    animation: bottomUp 1.3s ease forwards;
+}
+
+.anim-from-top-right.active {
+    animation: topRight 1.3s ease forwards;
+}
+
+/* =========================
+   GALERÍA - ESTILO GLOBAL
+   (Grid, tabs, botones, animaciones, responsive)
+   ========================= */
+
+/* Variables base si no están definidas */
+:root {
+  --color-primary: #43b5ff;
+  --bg: #ffffff;
+  --text: #0b1220;
+}
+
+/* Layout general */
+.gallery-section {
+  margin-top: 110px;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  -webkit-font-smoothing:antialiased;
+  padding: 0 18px 60px; /* Ya tienes padding lateral */
+
+  /* ⚠️ REGLAS CRUCIALES CONTRA EL DESBORDAMIENTO: */
+  box-sizing: border-box; 
+  max-width: 100%; /* El ancho máximo es el 100% del padre */
+  overflow-x: hidden; /* Oculta cualquier cosa que se salga del borde derecho */
+}
+
+/* TITULO / SUBTITULO */
+.gallery-title { font-size:56px; font-weight:900; margin-bottom:12px; color:var(--color-primary);
+  text-shadow:0 0 10px rgba(0,132,255,.7),0 0 20px rgba(0,132,255,.5); }
+.gallery-subtitle { font-size:26px; font-weight:500; margin-top:5px; margin-bottom:40px; color:var(--color-primary);
+  text-shadow:0 0 8px rgba(0,132,255,.7); }
+
+/* TOP BAR (tabs + theme btn) */
+.gallery-top-bar { display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap; width:100%; margin:20px auto 30px; }
+.theme-toggle-btn {
+  width:52px;height:52px;border-radius:14px;border:none;background:var(--color-primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 12px rgba(0,132,255,.55);
+  transition:transform .22s ease, box-shadow .22s;
+}
+.theme-toggle-btn:hover{ transform:scale(1.12); box-shadow:0 0 18px rgba(0,132,255,.65); }
+.theme-icon{ font-size:20px; transition:transform .35s, opacity .25s; }
+.theme-icon.animate{ transform:rotate(360deg) scale(1.15); }
+
+/* TABS */
+.gallery-tabs { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; align-items:center;}
+.gallery-tabs .tab {
+  padding:10px 18px; border-radius:14px; border:2px solid var(--color-primary); background:#e9f5ff;
+  color:var(--color-primary); font-weight:600; cursor:pointer; transition:all .25s ease;
+}
+.gallery-tabs .tab:hover { background:var(--color-primary); color:#fff; transform:translateY(-3px);
+  box-shadow:0 0 14px rgba(0,132,255,.55); }
+.gallery-tabs .tab.active { background:var(--color-primary); color:#fff; box-shadow:0 0 16px rgba(0,132,255,.65); }
+
+/* Corrección: Cambia 'dense' a 'row' o elimínalo */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-auto-rows: 160px;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Section block (each section uses this grid) */
+.gallery-section-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-auto-rows: 170px;
+  gap: 18px;
+  grid-auto-flow: row; /* <--- CAMBIA 'dense' por 'row' o ELIMÍNALO */
+}/* SIZE CLASSES */
+.grid-small { grid-column: span 1; grid-row: span 1; }
+.grid-wide  { grid-column: span 2; grid-row: span 1; }
+.grid-tall  { grid-column: span 1; grid-row: span 2; }
+.grid-large { grid-column: span 2; grid-row: span 2; }
+
+/* GALLERY ITEM */
+.gallery-item { position:relative; overflow:hidden; border-radius:12px; background:#f6f8fb; will-change:transform,opacity; }
+.gallery-item img, .gallery-item video {
+    width:100%; height:100%; object-fit:cover; display:block; border-radius:12px; transition: transform .35s ease, filter .25s ease, opacity .5s ease;
+    opacity:1; transform:none;
+}
+
+/* Hover */
+.gallery-item:hover img, .gallery-item:hover video { transform: translateY(-6px) scale(1.03); box-shadow:0 16px 40px rgba(12,20,40,0.12); }
+
+/* Captions (optional) */
+.gallery-caption { position:absolute; left:12px; bottom:12px; color:#fff; background:rgba(0,0,0,0.35); padding:6px 10px; border-radius:8px; font-weight:700; }
+
+/* SECTION TITLE + VERSE */
+.gallery-section-title { text-align:center; margin:40px auto 20px; max-width:900px; }
+.gallery-section-name { font-size:42px; font-weight:800; color:var(--color-primary); text-shadow:0 0 12px rgba(67,181,255,.55); margin-bottom:10px; }
+.gallery-verse { font-size:20px; line-height:1.5; font-weight:500; color:var(--color-primary); text-shadow:0 0 8px rgba(67,181,255,.25); }
+
+/* NOTICE (Gesto de Amor) */
+.gallery-notice-container { display:flex; justify-content:center; margin:40px 0 60px; }
+.gallery-notice-box { background:#e9f5ff; padding:35px 45px; border-radius:20px; max-width:600px; border:2px solid var(--color-primary); box-shadow:0 0 20px rgba(0,132,255,.35); animation:fadeIn .9s ease both; }
+.gallery-notice-box i { font-size:48px; color:var(--color-primary); margin-bottom:10px; text-shadow:0 0 14px rgba(0,132,255,.45); }
+.gallery-notice-box p { font-size:22px; font-weight:600; color:var(--color-primary); }
+
+/* RESPONSIVE */
+@media (max-width:900px) { .gallery-grid, .gallery-section-block { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); grid-auto-rows:140px; } }
+@media (max-width:600px) {
+  .gallery-grid, .gallery-section-block { grid-template-columns: repeat(2,1fr); grid-auto-rows:130px; gap:12px; }
+  .gallery-title { font-size:34px; }
+  .gallery-subtitle { font-size:16px; }
+  .gallery-tabs .tab { padding:9px 12px; font-size:.95rem; }
+  .theme-toggle-btn { order:2; margin-left:auto; }
+}
+
+/* DARK THEME */
+:root[data-theme="dark"] { --bg:#070707; --text:#f3f6ff; --color-primary:#43b5ff; }
+:root[data-theme="dark"] body { background:var(--bg); color:var(--text); }
+:root[data-theme="dark"] .gallery-section { background:var(--bg); color:var(--text); }
+:root[data-theme="dark"] .gallery-item { background:#0f0f12; }
+:root[data-theme="dark"] .gallery-tabs .tab { background:#131313; border-color:var(--text); color:var(--text); }
+:root[data-theme="dark"] .gallery-notice-box { background:#151515; border-color:var(--text); box-shadow:0 0 20px rgba(255,255,255,.12); }
+
+/* ========== ANIMACIONES (varias para diversidad) ========== */
+@keyframes fadeIn { from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:translateY(0)} }
+@keyframes slideUp  { from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
+@keyframes slideDown{ from{opacity:0; transform:translateY(-22px)} to{opacity:1; transform:translateY(0)} }
+@keyframes slideLeft{ from{opacity:0; transform:translateX(20px)} to{opacity:1; transform:translateX(0)} }
+@keyframes slideRight{ from{opacity:0; transform:translateX(-20px)} to{opacity:1; transform:translateX(0)} }
+@keyframes scaleUp  { from{opacity:0; transform:scale(.92)} to{opacity:1; transform:scale(1)} }
+
+/* helper classes applied by JS */
+.anim-slideUp { animation: slideUp .7s ease both; }
+.anim-slideDown { animation: slideDown .7s ease both; }
+.anim-slideLeft { animation: slideLeft .7s ease both; }
+.anim-slideRight { animation: slideRight .7s ease both; }
+.anim-fadeIn { animation: fadeIn .7s ease both; }
+.anim-scaleUp { animation: scaleUp .8s ease both; }
+
+/* SHOW/HIDE used for filter transitions */
+.show-item { opacity:1; transform:scale(1); pointer-events:auto; transition:opacity .45s, transform .45s; }
+.hide-item { opacity:0; transform:scale(.94); pointer-events:none; transition:opacity .35s, transform .35s; }
+
+/* RIPPLE */
+.media-button { position:relative; overflow:hidden; display:block; }
+.ripple { position:absolute; width:120px; height:120px; background:rgba(67,181,255,.35); border-radius:50%; transform:translate(-50%,-50%) scale(0); animation:rippleAnim .6s ease-out forwards; pointer-events:none; }
+@keyframes rippleAnim { to { transform:translate(-50%,-50%) scale(2.2); opacity:0 } }
+
+/* FULLSCREEN overlay */
+.fullscreen-overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(6,6,10,0.75); z-index:9999; padding:20px; }
+.fullscreen-overlay.active { display:flex; }
+.fullscreen-overlay img, .fullscreen-overlay video { max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+.close-button { position:absolute; top:20px; right:20px; background:transparent; border:none; color:#fff; font-size:36px; cursor:pointer; }
+
+/* ensure images visible if some rule set opacity 0 earlier */
+.gallery-item img { opacity:1 !important; transform:none !important; }
+
+/* ============================================
+   RADIO ONLINE — ESTILO PREMIUM MARANATHA
+============================================ */
+
+.radio-section {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.radio-title {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--color-primary);
+    text-shadow: 0 0 12px rgba(0,132,255,0.45);
+}
+
+.radio-subtitle {
+    margin-top: 8px;
+    font-size: 22px;
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(0,132,255,0.35);
+}
+
+/* SLIDER */
+.radio-slider {
+    width: 100%;
+    max-width: 900px;
+    height: 340px;
+    overflow: hidden;
+    margin: 40px auto;
+    border-radius: 22px;
+    position: relative;
+}
+
+.radio-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: sliderFade 30s infinite;
+}
+
+.radio-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animación cada 10 segundos */
+.radio-slide:nth-child(1) { animation-delay: 0s; }
+.radio-slide:nth-child(2) { animation-delay: 10s; }
+.radio-slide:nth-child(3) { animation-delay: 20s; }
+
+@keyframes sliderFade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    33% { opacity: 1; }
+    43% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* LIVE LABEL */
+.radio-live-label {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    text-shadow: 0 0 12px rgba(0,132,255,0.45);
+}
+
+.live-dot {
+    width: 14px;
+    height: 14px;
+    background: red;
+    border-radius: 50%;
+    box-shadow: 0 0 10px red;
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* PLAYER */
+.radio-player {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.radio-btn {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    font-size: 26px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 0 16px rgba(0,132,255,0.55),
+        0 0 22px rgba(0,132,255,0.25);
+    transition: .25s ease;
+}
+
+.radio-btn:hover {
+    transform: scale(1.1);
+}
+
+.radio-info {
+    text-align: left;
+}
+
+.radio-status {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.radio-program {
+    font-size: 15px;
+    color: var(--color-primary);
+}
+
+/* DARK MODE */
+:root[data-theme="dark"] .radio-title,
+:root[data-theme="dark"] .radio-subtitle,
+:root[data-theme="dark"] .radio-status,
+:root[data-theme="dark"] .radio-program,
+:root[data-theme="dark"] .radio-live-label {
+    color: var(--color-text);
+}
+
+/* CARD GENERAL */
+.radio-card {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--color-bg);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 0 25px rgba(0, 132, 255, 0.25);
+    border: 1px solid rgba(0,132,255,0.2);
+    transition: .3s ease;
+}
+
+:root[data-theme="dark"] .radio-card {
+    background: rgba(20,20,20,0.7);
+    backdrop-filter: blur(8px);
+}
+
+/* ENCABEZADO DE LA TARJETA */
+.radio-card-header {
+    text-align: center;
+    margin-bottom: 25px;
+    animation: fadeInDown .8s ease;
+}
+
+.radio-card-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.icon-big {
+    font-size: 60px;
+    color: var(--color-primary);
+    text-shadow: 0 0 15px rgba(0,132,255,0.4);
+}
+
+/* BADGE EN VIVO */
+.live-badge {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    color: var(--color-primary);
+}
+
+/* CARD HOVER */
+.radio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(0,132,255,0.5);
+}
+
+/* ANIMACIONES */
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-15px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   RADIO — PLAYER FLOTANTE ESTILO APP
+============================================ */
+
+.floating-radio {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 500px;
+
+    background: var(--color-bg);
+    border-radius: 18px;
+    padding: 12px 18px;
+
+    box-shadow:
+        0 0 18px rgba(0,132,255,0.35),
+        0 4px 25px rgba(0,132,255,0.25);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+
+    z-index: 999999;
+    backdrop-filter: blur(10px);
+    animation: slideUp .7s ease;
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from { transform: translate(-50%, 40px); opacity: 0; }
+    to   { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Izquierda */
+.radio-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.radio-cover img {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.28);
+}
+
+.radio-info-box {
+    line-height: 1.2;
+}
+
+.radio-now {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ff3b3b;
+    text-shadow: 0 0 8px rgba(255,60,60,0.5);
+}
+
+.radio-program-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Botón play/pause */
+.radio-float-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition: .25s ease;
+
+    box-shadow:
+        0 0 14px rgba(0,132,255,0.55),
+        0 0 22px rgba(0,132,255,0.25);
+}
+
+.radio-float-btn:hover {
+    transform: scale(1.12);
+}
+
+/* Modo oscuro */
+:root[data-theme="dark"] .floating-radio {
+    background: rgba(15,15,15,0.75);
+    color: var(--color-text);
+}
+
+:root[data-theme="dark"] .radio-program-name {
+    color: var(--color-text);
+}
+
+/* Asumiendo que el fondo de la página/footer es negro, como en tu imagen oscura */
+.oculta {
+    /* Si quieres que siempre se muestre, pero camuflado: */
+    text-align: right; /* O donde lo quieras posicionar */
+    padding: 5px; /* Para darle espacio */
+}
+
+.boton-oculto {
+    /* Color del texto igual al fondo (negro en este ejemplo) */
+    color: #000000;
+    
+    /* Para que no se vea el subrayado del enlace */
+    text-decoration: none;
+    
+    /* Opcional: Para asegurar que se pueda hacer clic si lo descubren */
+    cursor: pointer;
+}
+
+/* Puedes añadir un efecto de :hover para probar que funciona */
+.boton-oculto:hover {
+    color: #FFFFFF; /* Cambia a blanco al pasar el ratón para que se vea */
+}
+
+/* ==========================================
+   FIX: Forzar orden de apilamiento en la Galería
+   Evita que vídeos/imagenes se solapen entre sí
+   ========================================== */
+.gallery-section, .gallery-section-block, .gallery-grid {
+    position: relative; /* crea un contexto de apilamiento
+                            para que los hijos no se salgan de la sección */
+    z-index: 0;
+}
+
+.gallery-item {
+    position: relative !important;
+    z-index: 1; /* Cada item en su propia capa base */
+    isolation: isolate; /* aislamos stacking context para mayor seguridad */
+}
+
+.gallery-item .media-button,
+.gallery-item img,
+.gallery-item video {
+    position: relative !important;
+    z-index: 1 !important;
+    display: block !important;
+}
+
+/* Asegurar que los vídeos tengan fondo negro y no muestren artefactos debajo */
+.gallery-item video {
+    background: #000;
+    object-fit: cover;
+}
+
+/* El overlay de pantalla completa debe estar siempre por encima */
+.fullscreen-overlay {
+    z-index: 100000 !important;
+}
+
+/* El ripple debe quedar por encima del contenido del item solo temporalmente */
+.media-button .ripple {
+    z-index: 5;
+}
+
+/* Si algún item quedaba con pointer-events desactivados, aseguramos que los visibles sí respondan */
+.show-item, .gallery-item.show-item {
+    pointer-events: auto !important;
+}
+
+/* Evitar que elementos absolutos dentro del grid se salgan y solapen con otros items */
+.gallery-section, .gallery-section-block { overflow: hidden; }
+
+/* ==================================================
+   ENHANCEMENTS: Keep variable media sizes, prevent overlap
+   - Use aspect-ratio where supported to lock visual boxes
+   - Use a predictable row height so grid spans behave well
+   - Let items center their media and use object-fit:cover
+   ================================================== */
+
+/* Make the grid rows predictable: each 'row' unit is 120px
+   so .grid-large / .grid-tall (span 2) become ~240px high. */
+.gallery-section-block {
+    grid-auto-rows: 120px; /* base row height for span calculations */
+}
+
+/* Ensure span classes are consistent (re-asserting) */
+.grid-small { grid-column: span 1; grid-row: span 1; }
+.grid-wide  { grid-column: span 2; grid-row: span 1; }
+.grid-tall  { grid-column: span 1; grid-row: span 2; }
+.grid-large { grid-column: span 2; grid-row: span 2; }
+
+/* Give each item a flexible box so media centers nicely */
+.gallery-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Default aspect ratios to visually balance items while keeping design
+   different sizes possible. These are hints only — images/videos keep
+   their intrinsic proportions inside the box using object-fit:cover. */
+.grid-small > img, .grid-small > video { aspect-ratio: 4 / 3; }
+.grid-large > img, .grid-large > video { aspect-ratio: 16 / 9; }
+.grid-tall  > img, .grid-tall  > video { aspect-ratio: 3 / 4; }
+.grid-wide  > img, .grid-wide  > video { aspect-ratio: 16 / 9; }
+
+/* Ensure media fill their box and crop safely */
+.gallery-item img, .gallery-item video, .gallery-item .media-button img, .gallery-item .media-button video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* Make sure autoplaying videos remain visually inside their grid cell */
+.gallery-item video { background: #000; }
+
+/* Keep fullscreen overlay above everything */
+.fullscreen-overlay { z-index: 200000 !important; }
+
+/* Optional debug helper (temporary) — uncomment while debugging layout */
+/* .gallery-item { outline: 1px dashed rgba(0,0,0,0.08); } */
+
